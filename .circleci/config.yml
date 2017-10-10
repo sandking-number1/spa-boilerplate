@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  unit_test:
     docker:
       # specify the version you desire here
       - image: circleci/node:latest-browsers
@@ -35,3 +35,37 @@ jobs:
         
       # run tests!
       - run: npm test
+
+  e2e_test:
+    docker:
+      # the Docker image with Cypress preinstalled
+      - image: cypress/internal:cy-0.19.4
+        environment:
+          ## this enables colors in the output
+          TERM: xterm
+    working_directory: ~/app
+    parallelism: 1
+    steps:
+      - checkout
+      - run: npm install
+      - run:
+          name: Running E2E tests with JUnit reporter
+          command: npm run test-junit
+      - store_test_results:
+          path: junit-results
+      - run:
+          name: Running E2E tests with multiple reporters
+          command: npm run test-multiple
+      - store_test_results:
+          path: multiple-results
+      - store_artifacts:
+          path: cypress/videos
+      - store_artifacts:
+          path: cypress/screenshots
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - unit_test
+      - e2e_test

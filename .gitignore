@@ -1,1 +1,4 @@
 /node_modules/
+/junit-results/
+/cypress/videos/*
+.DS_Store
