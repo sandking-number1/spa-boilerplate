@@ -64,7 +64,7 @@ jobs:
           path: cypress/screenshots
 
   deployment:
-    staging:
+    production:
       branch: master
       heroku:
         appname: philipmorrisdev
