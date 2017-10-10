@@ -64,7 +64,12 @@ jobs:
           path: cypress/screenshots
 
   deployment:
+    docker:
+      - image: mesosphere/aws-cli
+
     steps:
+      - checkout
+
       - deploy:
         name: Deploy to S3 if tests pass and branch is Master
         command: |
