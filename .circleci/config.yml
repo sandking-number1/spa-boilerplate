@@ -63,9 +63,16 @@ jobs:
       - store_artifacts:
           path: cypress/screenshots
 
+  deployment:
+    staging:
+      branch: master
+      heroku:
+        appname: philipmorrisdev
+
 workflows:
   version: 2
   test:
     jobs:
       - unit_test
       - e2e_test
+      - deployment
