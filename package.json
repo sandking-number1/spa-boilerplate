@@ -4,17 +4,23 @@
   "description": "Philip Morris User Interface",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test-junit": "cypress run --reporter junit --reporter-options 'mochaFile=junit-results/my-test-output.xml'",
-    "test-multiple": "cypress run --reporter mocha-multi-reporters --reporter-options configFile=config.json"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "repository": {
-    "type": "git",
+    "type": "git",  
     "url": "git+https://bitbucket.org/philipmorrisdev/ui.git"
   },
   "author": "Daniele Salvatore",
   "license": "ISC",
   "homepage": "https://bitbucket.org/philipmorrisdev/ui#readme",
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.14"
+  },
   "devDependencies": {
     "jest": "^21.2.1",
     "mocha": "^3.5.0",

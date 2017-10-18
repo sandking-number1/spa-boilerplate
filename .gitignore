@@ -3,3 +3,4 @@
 /multiple-results/
 /cypress/videos/*
 .DS_Store
+/build/
