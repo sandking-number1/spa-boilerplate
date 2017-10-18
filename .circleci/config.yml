@@ -1,8 +1,5 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
 version: 2
+
 jobs:
   unit_test:
     docker:
@@ -37,29 +34,40 @@ jobs:
       - run: npm test
 
   e2e_test:
+
     docker:
-      # the Docker image with Cypress preinstalled
+      # Docker image with Cypress preinstalled
       - image: cypress/internal:cy-0.19.4
-        environment:
-          ## this enables colors in the output
-          TERM: xterm
+
     working_directory: ~/repo
-    parallelism: 1
+
     steps:
+
       - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
       - run: npm install
+
+      - run: npm start
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
       - run:
-          name: Running E2E tests with JUnit reporter
-          command: npm run test-junit
-      - store_test_results:
-          path: junit-results
-      - run:
-          name: Running E2E tests with multiple reporters
-          command: npm run test-multiple
-      - store_test_results:
-          path: multiple-results
+          name: Running E2E tests 
+          command: cypress run
+    
       - store_artifacts:
           path: cypress/videos
+
       - store_artifacts:
           path: cypress/screenshots
 
@@ -71,11 +79,7 @@ jobs:
 
       - checkout
 
-      - run: ls -al 
-
-      - run: pwd
-
-       # Download and cache dependencies
+      # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
@@ -94,10 +98,14 @@ jobs:
       - deploy:
           name: Deploy to S3 if tests pass and branch is Master
           command: |
-            aws s3 sync ./build s3://philipmorrisdev --delete --region eu-west-2 --acl public-read
-
+           if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              aws s3 sync ./build s3://philipmorrisdev --delete --region eu-west-2 --acl public-read
+            else
+              echo "Not master branch so not deploying"
+            fi
+            
 workflows:
   version: 2
   test:
     jobs:
-      - deployment
+      - e2e_test
