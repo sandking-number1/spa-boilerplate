@@ -35,9 +35,7 @@ jobs:
 
   e2e_test:
 
-    docker:
-      # Docker image with Cypress preinstalled
-      - image: cypress/internal:cy-0.19.4
+    machine: true
 
     working_directory: ~/repo
 
@@ -47,17 +45,26 @@ jobs:
 
       - run: npm install
 
-      - run: npm start &
+      - run: npm run build
 
+       # build  Docker image
+      - run: |
+          TAG=$CIRCLE_BUILD_NUM
+          USERNAME=philipmorrisdev
+          REPO=ui
+          docker build -t $USERNAME/$REPO:$TAG .
+          docker run -d -p 3000:80
+
+      # This should go into custom primary image, here's only for the sake of explanation
       - run:
-          name: Running E2E tests 
+          name: Install Cypress
+          command: |
+            set -x
+            npm install cypress -g
+            
+      - run:
+          name: Running E2E tests
           command: cypress run
-    
-      - store_artifacts:
-          path: cypress/videos
-
-      - store_artifacts:
-          path: cypress/screenshots
 
   deployment:
     docker:
