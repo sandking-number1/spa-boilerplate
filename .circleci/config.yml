@@ -65,7 +65,7 @@ jobs:
 
   deployment:
     docker:
-      - image: codelovers/nodejs-aws-cli
+      - image: efficienthealth/node-awscli:latest
 
     working_directory: ~/repo
 
