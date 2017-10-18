@@ -103,4 +103,6 @@ workflows:
   version: 2
   test:
     jobs:
+      - unit_test
       - e2e_test
+      - deployment
