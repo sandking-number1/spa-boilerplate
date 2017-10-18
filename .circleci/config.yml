@@ -81,4 +81,8 @@ workflows:
     jobs:
       - unit_test
       - e2e_test
+          requires:
+            - unit_test
       - deployment
+          requires:
+            - e2e_test
