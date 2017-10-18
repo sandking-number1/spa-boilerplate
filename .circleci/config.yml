@@ -76,13 +76,19 @@ jobs:
             fi
             
 workflows:
+
   version: 2
-  test:
+  
+  test_and_deploy:
+
     jobs:
+
       - unit_test
-      - e2e_test
+      
+      - e2e_test:
           requires:
             - unit_test
-      - deployment
+      
+      - deployment:
           requires:
             - e2e_test
