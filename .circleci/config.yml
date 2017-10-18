@@ -86,7 +86,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm build
+      - run: npm run build
 
       - deploy:
           name: Deploy to S3 if tests pass and branch is Master
@@ -97,5 +97,4 @@ workflows:
   version: 2
   test:
     jobs:
-      - unit_test
       - deployment
