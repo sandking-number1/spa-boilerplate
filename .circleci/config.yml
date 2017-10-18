@@ -68,7 +68,12 @@ jobs:
       - image: efficienthealth/node-awscli:latest
 
     steps:
+
       - checkout
+
+      - run: ls -al 
+
+      - run: pwd
 
        # Download and cache dependencies
       - restore_cache:
