@@ -2,6 +2,7 @@
 /junit-results/
 /multiple-results/
 /cypress/videos/*
+/cypress/screenshots/*
 .DS_Store
 /build/
 *.iml
