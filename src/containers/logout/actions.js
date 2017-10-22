@@ -1,8 +1,8 @@
 import {LOGOUT_REQUEST, LOGOUT_SUCCESS} from './constants';
 import LocalStorage from 'localStorage'
-import {getToken} from '../../modules/authentication'
+import {getToken} from '../../utils/authentication'
 import * as ROUTES from '../../config/routes'
-import * as api from '../../modules/api'
+import * as api from '../../api'
 
 export const logout = ({history}) => (dispatch) => {
 

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import packageJson from '../../../package.json'
 import {HOME} from '../../config/routes'
-import {getAuthenticationError, getAuthUser, getToken} from '../../modules/authentication';
+import {getAuthenticationError, getAuthUser, getToken} from '../../utils/authentication';
 import {login} from './actions';
 
 class Login extends PureComponent {
@@ -36,7 +36,7 @@ class Login extends PureComponent {
         return (
             <div>
                 <h1>Login</h1>
-                {loginError && <div id="login-error-message" className="alert alert-danger">Incorrect username or password.</div>}
+                {loginError && <div id="login-error-message" className="alert alert-danger">Username o password invalidi</div>}
                 <Form
                     onSubmit={onSubmit}
                 />

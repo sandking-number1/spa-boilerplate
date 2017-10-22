@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import {isAuthenticated} from '../../modules/authentication'
+import {isAuthenticated} from '../../utils/authentication'
 
 /**
  * Higher-order component (HOC) to wrap restricted pages

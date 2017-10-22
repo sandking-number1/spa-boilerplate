@@ -19,6 +19,7 @@
   "dependencies": {
     "bootstrap": "3.3.7",
     "localStorage": "^1.0.3",
+    "normalizr": "^3.2.4",
     "react": "^16.0.0",
     "react-bootstrap": "^0.31.3",
     "react-dom": "^16.0.0",
@@ -27,6 +28,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.8",
     "react-scripts": "1.0.14",
+    "react-useragent": "^0.4.4",
     "redux": "^3.7.2",
     "redux-form": "^7.1.1",
     "redux-thunk": "^2.2.0"

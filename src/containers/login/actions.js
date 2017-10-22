@@ -1,5 +1,5 @@
 import {LOGIN_ERROR, LOGIN_REQUEST, LOGIN_SUCCESS} from './constants';
-import * as api from '../../modules/api';
+import * as api from '../../api';
 import LocalStorage from 'localStorage';
 import {reset} from 'redux-form'
 import {FORM_NAME} from './constants'
