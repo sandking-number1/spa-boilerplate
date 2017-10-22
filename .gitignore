@@ -4,3 +4,6 @@
 /cypress/videos/*
 .DS_Store
 /build/
+*.iml
+/.idea/
+src/index.css.map
