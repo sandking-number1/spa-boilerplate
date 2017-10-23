@@ -91,6 +91,6 @@ workflows:
       #    requires:
       #      - unit_test
       
-      - deployment:
+      - deployment
       #    requires:
       #      - e2e_test
