@@ -41,7 +41,7 @@ jobs:
           USERNAME=philipmorrisdev
           REPO=ui
           docker build -t $USERNAME/$REPO:$TAG .
-          docker run -d -p 3000:80 -p 3000:3000 $USERNAME/$REPO:$TAG
+          docker run -d -p 3000:3000 $USERNAME/$REPO:$TAG
 
       # This should go into custom primary image, here's only for the sake of explanation
       - run:
