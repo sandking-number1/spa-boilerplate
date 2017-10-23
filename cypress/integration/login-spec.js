@@ -1,6 +1,9 @@
-import {validUser, invalidUser, UI_BASE_PATH} from '../const';
+import {validUser, invalidUser} from '../const';
 
 describe('Login page', function(){
+    const UI_BASE_PATH = Cypress.env("baseUrl");
+
+console.log(UI_BASE_PATH)
 
     it('Login with valid user', function() {
         cy.visit(UI_BASE_PATH);
