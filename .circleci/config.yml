@@ -87,10 +87,10 @@ workflows:
 
       #- unit_test
       
-      #- e2e_test:
+      - e2e_test
       #    requires:
       #      - unit_test
       
-      - deployment
+      #- deployment:
       #    requires:
       #      - e2e_test
