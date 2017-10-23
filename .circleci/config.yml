@@ -41,7 +41,7 @@ jobs:
           USERNAME=philipmorrisdev
           REPO=ui
           docker build -t $USERNAME/$REPO:$TAG .
-          docker run -d -p 3000:80 -p 3000:80 $USERNAME/$REPO:$TAG
+          docker run -d -p 3000:80 -p 3000:3000 $USERNAME/$REPO:$TAG
 
       # This should go into custom primary image, here's only for the sake of explanation
       - run:
@@ -85,12 +85,12 @@ workflows:
 
     jobs:
 
-      - unit_test
+      #- unit_test
       
-      - e2e_test:
-          requires:
-            - unit_test
+      #- e2e_test:
+      #    requires:
+      #      - unit_test
       
       - deployment:
-          requires:
-            - e2e_test
+      #    requires:
+      #      - e2e_test
