@@ -1,4 +1,4 @@
-# Philip Morris - Formula reps - User interface
+# React (and create-react-app), Redux, Cypress, Docker, CircleCI, Bootstrap, SPA with authentication boilerplate
 
 ```javascript
 // Install dependencies

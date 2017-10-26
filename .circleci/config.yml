@@ -38,7 +38,7 @@ jobs:
        # build  Docker image
       - run: |
           TAG=$CIRCLE_BUILD_NUM
-          USERNAME=philipmorrisdev
+          USERNAME=myUsername
           REPO=ui
           docker build -t $USERNAME/$REPO:$TAG .
           docker run -d -p 80:80 $USERNAME/$REPO:$TAG
@@ -69,10 +69,10 @@ jobs:
       - deploy:
           name: Deploy to S3 if tests pass and branch is Master
           command: |
-              aws s3 sync ./build s3://philipmorrisdev --delete --region eu-west-2 --acl public-read
+              aws s3 sync ./build s3://myUsername --delete --region eu-west-2 --acl public-read
 
 #   if [ "${CIRCLE_BRANCH}" == "master" ]; then
-#               aws s3 sync ./build s3://philipmorrisdev --delete --region eu-west-2 --acl public-read
+#               aws s3 sync ./build s3://myUsername --delete --region eu-west-2 --acl public-read
 #             else
 #               echo "Not master branch so not deploying"
 #             fi

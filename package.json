@@ -1,7 +1,7 @@
 {
-  "name": "philip-morris-ui",
+  "name": "spa-boilerplate",
   "version": "1.0.0",
-  "description": "Philip Morris User Interface",
+  "description": "React (and create-react-app), Redux, Cypress, Docker, CircleCI, Bootstrap, SPA with authentication boilerplate",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://bitbucket.org/philipmorrisdev/ui.git"
+    "url": "git+https://github.com/danielesalvatore/spa-boilerplate.git"
   },
   "author": "Daniele Salvatore",
   "license": "ISC",
